@@ -1,0 +1,17 @@
+Functionele strategie
+
+- 4 kaartjes maken
+- plaatjes toevoegen
+- klik en kaartje draait om
+- klik en kaartje draait de andere kant weer op 
+
+
+
+
+
+
+
+
+
+
+Technische Strategie
