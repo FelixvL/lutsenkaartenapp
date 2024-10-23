@@ -13,19 +13,150 @@ body {
     height: 100vh;
     overflow: hidden;
     margin: 0;
+    background-color: rgb(44, 44, 44);
+}
+
+.header {
+    display: flex; /* Gebruik Flexbox voor horizontale uitlijning */
+    align-items: center; /* Lijn items verticaal uit */
+    justify-content: space-between; /* Maximaal ruimte tussen de items */
+    color: aliceblue;
+    z-index: 2;
+    padding: 0 20px; /* Optioneel: voeg padding toe om ruimte aan de zijkanten te creëren */
+}
+
+.header div {
+    margin-right: 20rem;
+}
+
+.header p {
+    color: rgb(0, 255, 0);
+    font-size: 25px;
 }
 
 .container {
     display: flex;
+    background-color: rgb(133, 133, 133);
+    box-shadow: rgb(0, 0, 0) 20px 20px 500px;
+    padding: 30px;
 }
 
 .kaart {
-    background-color: aquamarine;
-    padding: 50px;
+    /* padding: 50px; */
     margin: 20px;
+    cursor: pointer;
+    transition: 0.25s;
+    border-radius: 40px;
+}
+
+.kaart:hover {
+    box-shadow: 7px 6px 7px #505050;
+    /* transform: translateX(-10px); */
+    transform: translateY(-4px);
 }
 
 img {
     width: 200px;
     height: 200px;
+    /* box-shadow: 3px 3px 10px black; */
+    border-radius: 25px;
+}
+
+/* de reset button */
+
+.reset {
+    margin-top: 50px !important;
+    z-index: 2;
+}
+
+.reset,
+.reset *,
+.reset :after,
+.reset :before,
+.reset:after,
+.reset:before {
+    border: 0 solid;
+    box-sizing: border-box;
+}
+
+.reset {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background-image: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 900;
+    line-height: 1.5;
+    margin: 0;
+    -webkit-mask-image: -webkit-radial-gradient(#ff0000, #ff0000);
+    padding: 0;
+    text-transform: uppercase;
+}
+.reset:disabled {
+    cursor: default;
+}
+.reset:-moz-focusring {
+    outline: auto;
+}
+.reset svg {
+    display: block;
+    vertical-align: middle;
+}
+.reset [hidden] {
+    display: none;
+}
+.reset {
+    background: none;
+    -webkit-mask-image: none;
+    padding: 1rem 3rem;
+    position: relative;
+}
+.reset span {
+    mix-blend-mode: difference;
+}
+.reset:after,
+.reset:before {
+    --progress: 0%;
+    background: #ff0000;
+    -webkit-clip-path: polygon(
+        0 50%,
+        var(--progress) 0,
+        100% 0,
+        calc(100% - var(--progress)) 50%,
+        100% 100%,
+        var(--progress) 100%
+    );
+    clip-path: polygon(
+        0 50%,
+        var(--progress) 0,
+        100% 0,
+        calc(100% - var(--progress)) 50%,
+        100% 100%,
+        var(--progress) 100%
+    );
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: height 0.4s, transform 0.4s, -webkit-clip-path 0.4s 0.1s;
+    transition: height 0.4s, transform 0.4s, clip-path 0.4s 0.1s;
+    transition: height 0.4s, transform 0.4s, clip-path 0.4s 0.1s,
+        -webkit-clip-path 0.4s 0.1s;
+    width: 100%;
+    z-index: -1;
+}
+.reset:after {
+    transform: rotate(180deg) translateY(50%);
+}
+.reset:hover:before {
+    --progress: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(35%);
+}
+.reset:hover:after {
+    --progress: 50%;
+    top: 50%;
+    transform: rotate(180deg) translateY(50%) translateX(35%);
 }

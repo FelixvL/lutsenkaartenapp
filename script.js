@@ -1,81 +1,100 @@
-// let wissel = document.getElementById("kaart1");
-// let wissel2 = document.getElementById("kaart2");
-// let wissel3 = document.getElementById("kaart3");
-// let wissel4 = document.getElementById("kaart4");
+let aantalkeergeklikt = 0;
+let vorigeindex = -1;
 
-// // Hoe kan ik deze code verbeteren; maak een overkoepelende functie
-// function kaart1() {
-//     wissel.src = "afbeeldingen/geit.jpg";
-// }
-// function kaart2() {
-//     wissel2.src = "afbeeldingen/geit.jpg";
-// }
-// function kaart3() {
-//     wissel3.src = "afbeeldingen/possum.jpg";
-// }
-// // function kaart4() {
-// //     wissel4.src = "afbeeldingen/possum.jpg";
-// // }
-
-// function kaart1() {
-//     if (wissel.src.includes("achterkant.jpg")) {
-//         wissel.src = "afbeeldingen/geit.jpg";
-//     } else {
-//         wissel.src = "afbeeldingen/achterkant.jpg";
-//     }
-// }
-
-// function kaart2() {
-//     if (wissel2.src.includes("achterkant.jpg")) {
-//         wissel2.src = "afbeeldingen/geit.jpg";
-//     } else {
-//         wissel2.src = "afbeeldingen/achterkant.jpg";
-//     }
-// }
-
-// function kaart3() {
-//     if (wissel3.src.includes("achterkant.jpg")) {
-//         wissel3.src = "afbeeldingen/possum.jpg";
-//     } else {
-//         wissel3.src = "afbeeldingen/achterkant.jpg";
-//     }
-// }
-
-// function kaart4() {
-//     if (wissel4.src.includes("achterkant.jpg")) {
-//         wissel4.src = "afbeeldingen/possum.jpg";
-//     } else {
-//         wissel4.src = "afbeeldingen/achterkant.jpg";
-//     }
-// }
-
-let kaart = document.querySelectorAll("img");
-
-function wisselAfbeelding(kaartId, dier) {
-    let kaart = document.getElementById(kaartId);
-
-    if (kaart.src.includes("achterkant.jpg")) {
-        kaart.src = `afbeeldingen/${dier}.jpg`;
-    } else {
-        kaart.src = "afbeeldingen/achterkant.jpg";
-    }
-}
-
-let afbeeldingen = [
+// Houdt bij welke kaarten zijn omgedraaid
+let omgedraaid = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // mask array
+let kaarten = [
     "afbeeldingen/geit.jpg",
     "afbeeldingen/geit.jpg",
     "afbeeldingen/possum.jpg",
     "afbeeldingen/possum.jpg",
+    "afbeeldingen/capybara.jpg",
+    "afbeeldingen/capybara.jpg",
+    "afbeeldingen/kraai.jpg",
+    "afbeeldingen/kraai.jpg",
+    "afbeeldingen/lama.jpg",
+    "afbeeldingen/lama.jpg",
+    "afbeeldingen/neushoorn.jpg",
+    "afbeeldingen/neushoorn.jpg",
+    "afbeeldingen/stinkdier.jpg",
+    "afbeeldingen/stinkdier.jpg",
+    "afbeeldingen/tucan.jpg",
+    "afbeeldingen/tucan.jpg",
 ];
 
-function kenAfbeeldingenToe() {
-    for (let i = 0; i < kaart.length; i++) {
-        let teller = Math.floor(Math.random() * afbeeldingen.length);
-        kaart[i].src = afbeeldingen[teller]; // hier ken de afbeelding toe aan plaatjes
-        // afbeeldingen.slice(teller, teller + 1);
-        afbeeldingen.splice(teller, 1);
-        console.log(afbeeldingen.length);
+// Schud de kaarten
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+
+// Schud de kaarten bij het begin van het spel
+function startfunctie() {
+    shuffle(kaarten);
+}
+
+// autdo functie - werkt (plaats deze in de bestaandeb if statement)
+function playAudio1() {
+    let audio1 = new Audio("geluiden/retrogame-winnen.mp3");
+    audio1.play();
+}
+
+function playAudio2() {
+    let audio = new Audio("geluiden/retrogame-verliezen.wav");
+    audio.play();
+}
+
+function playAudio3() {
+    let audio = new Audio("geluiden/gewonnen.wav");
+    audio.play();
+}
+
+// Verander de afbeelding van de omgedraaide kaart
+function draaikaartom(kaartnr, plaatje) {
+    plaatje.src = kaarten[kaartnr];
+    aantalkeergeklikt++;
+    // Onthoud de index van de eerste kaart
+    if (aantalkeergeklikt == 1) {
+        vorigeindex = kaartnr;
+    } else if (aantalkeergeklikt == 2) {
+        if (kaarten[vorigeindex] == kaarten[kaartnr]) {
+            // Als de kaarten overeenkomen
+            omgedraaid[vorigeindex] = 1;
+            omgedraaid[kaartnr] = 1;
+            document.getElementById("klikOnthouden").innerHTML = klik;
+            // geluidseffect afspelen
+            playAudio1();
+        } else {
+            // Als de kaarten niet overeenkomen, draai ze terug
+            setTimeout(function () {
+                document.getElementById(`kaart${vorigeindex + 1}`).src =
+                    "afbeeldingen/achterkant.jpg";
+                document.getElementById(`kaart${kaartnr + 1}`).src =
+                    "afbeeldingen/achterkant.jpg";
+                playAudio2();
+                // hier onthoudt ik de klik!
+                document.getElementById("klikOnthouden").innerHTML = klik;
+            }, 1500);
+        }
+        aantalkeergeklikt = 0;
+        allesOmgedraaid();
     }
 }
 
-kenAfbeeldingenToe();
+function allesOmgedraaid() {
+    // Controleer of alle elementen in de 'omgedraaid'-array gelijk zijn aan 1
+    if (
+        omgedraaid.every(function (waarde) {
+            return waarde === 1;
+        })
+    ) {
+        playAudio3(); // Roep de functie aan om het geluid af te spelen
+    }
+}
+
+let klik = 0;
+function klikOnthouden() {
+    klik += 1 / 2;
+}
+
+// Start het spel wanneer de pagina wordt geladen
+window.onload = startfunctie;

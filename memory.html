@@ -1,0 +1,53 @@
+<!-- <script>
+    let aantalkeergeklikt = 0;
+    let vorigeindex = -1;
+
+    let omgedraaid = [0, 0, 0, 0];
+    let kaarten = ["konijn.jpg", "konijn.jpg", "mickey.jpg", "mickey.jpg"];
+    function shuffle(array) {
+        array.sort(() => Math.random() - 0.5);
+    }
+    function startfunctie() {
+        shuffle(kaarten);
+        toonscherm();
+    }
+    function draaikaartom(kaartnr, plaatje) {
+        plaatje.src = kaarten[kaartnr];
+        aantalkeergeklikt++;
+        if (aantalkeergeklikt != 2) {
+            vorigeindex = kaartnr;
+        } else {
+            if (kaarten[vorigeindex] == kaarten[kaartnr]) {
+                omgedraaid[vorigeindex] = 1;
+                omgedraaid[kaartnr] = 1;
+            } else {
+                setTimeout(resetnaareerstebeurt, 1500);
+                return;
+            }
+            toonscherm();
+        }
+    }
+    function resetnaareerstebeurt() {
+        vorige = -1;
+        aantalkeergeklikt = 0;
+        toonscherm();
+    }
+    function toonscherm() {
+        console.log("yes");
+        document.getElementById("speelbord").innerHTML = "";
+        for (let x = 0; x < omgedraaid.length; x++) {
+            let afbeeldingopkaart = "";
+            if (omgedraaid[x] == 0) {
+                afbeeldingopkaart = "achterkant.jpg";
+            } else {
+                afbeeldingopkaart = kaarten[x];
+            }
+            document.getElementById(
+                "speelbord"
+            ).innerHTML += `<img onclick="draaikaartom(${x}, this)" src=${afbeeldingopkaart} width=200px>`;
+        }
+    }
+
+    window.onload = startfunctie;
+</script>
+<div id="speelbord"></div> -->

@@ -3,10 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>4 kaarten</title>
+        <title>Kaarten omdraaien</title>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+        <div class="header">
+            <div>
+                <p id="klikOnthouden">0</p>
+            </div>
+            <div>
+                <h1>Memorykaart Spel</h1>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="kaart">
@@ -14,7 +22,7 @@
                         src="afbeeldingen/achterkant.jpg"
                         alt=""
                         id="kaart1"
-                        onclick="wisselAfbeelding('kaart1', 'geit')"
+                        onclick="draaikaartom(0, this, klikOnthouden())"
                     />
                 </div>
                 <div class="kaart">
@@ -22,7 +30,23 @@
                         src="afbeeldingen/achterkant.jpg"
                         alt=""
                         id="kaart2"
-                        onclick="wisselAfbeelding('kaart2', 'geit')"
+                        onclick="draaikaartom(1, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart3"
+                        onclick="draaikaartom(2, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart4"
+                        onclick="draaikaartom(3, this), klikOnthouden()"
                     />
                 </div>
             </div>
@@ -31,19 +55,108 @@
                     <img
                         src="afbeeldingen/achterkant.jpg"
                         alt=""
-                        id="kaart3"
-                        onclick="wisselAfbeelding('kaart3', 'possum')"
+                        id="kaart5"
+                        onclick="draaikaartom(4, this), klikOnthouden()"
                     />
                 </div>
                 <div class="kaart">
                     <img
                         src="afbeeldingen/achterkant.jpg"
                         alt=""
-                        id="kaart4"
-                        onclick="wisselAfbeelding('kaart4', 'possum')"
+                        id="kaart6"
+                        onclick="draaikaartom(5, this), klikOnthouden()"
                     />
                 </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart7"
+                        onclick="draaikaartom(6, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart8"
+                        onclick="draaikaartom(7, this), klikOnthouden()"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart9"
+                        onclick="draaikaartom(8, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart10"
+                        onclick="draaikaartom(9, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart11"
+                        onclick="draaikaartom(10, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart12"
+                        onclick="draaikaartom(11, this), klikOnthouden()"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart13"
+                        onclick="draaikaartom(12, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart14"
+                        onclick="draaikaartom(13, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart15"
+                        onclick="draaikaartom(14, this), klikOnthouden()"
+                    />
+                </div>
+                <div class="kaart">
+                    <img
+                        src="afbeeldingen/achterkant.jpg"
+                        alt=""
+                        id="kaart16"
+                        onclick="draaikaartom(15, this), klikOnthouden()"
+                    />
+                </div>
+            </div>
         </div>
+
+        <button class="reset" id="reset" onclick="location.reload();">
+            Reset
+        </button>
         <script src="script.js"></script>
     </body>
 </html>
