@@ -6,7 +6,10 @@ Functionele strategie
 - klik en kaartje draait de andere kant weer op 
 
 
-
+- localstorage gebruiken om de staat van de game te onthouden
+- audiofragementen met function + parameter
+- klik functie aanpassen
+- leaderboard maken die wordt onthouden (localstorage)
 
 
 

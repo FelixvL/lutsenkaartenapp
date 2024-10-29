@@ -56,5 +56,68 @@
 
     window.onload = startfunctie;
 
+
+    https://brave-ground-0bc301903.5.azurestaticapps.net/
+
+
+    let aantalkeergeklikt = 7;
+    let lijst = [1,3,4];
+    let fotos = ["fiets.jpg","auto.jpg"];
+
+localStorage.setItem("at", aantalkeergeklikt);
+localStorage.setItem("model", JSON.stringify(lijst));
+localStorage.setItem("fotovolgorede", JSON.stringify(fotos));
+    // let storageObjectFelix = {};
+    // storageObjectFelix.akg = aantalkeergeklikt;
+    // storageObjectFelix.lijstkliks = lijst;
+    // storageObjectFelix.fotosvolgorde = fotos;
+    // localStorage.setItem("soFelix", JSON.stringify(storageObjectFelix));
+
+// DRY
+playAudio("gewonnen1.wav");
+playAudio("gewonnen1.wav");
+playAudio("retrogame-verliezen.wav");
+playAudio("retrogame-winnen.mp3");
+
+
+
+function playAudio(felixparameter) {
+    let audio = new Audio("geluiden/"+felixparameter);
+    audio.play();
+}
+//=================
+
+playAudio(1);
+playAudio(0);
+playAudio(0);
+playAudio(2);
+
+
+
+function playAudio(keuze) {
+    let fragmenten = ["gewonnen1.wav","retrogame-verliezen.wav","retrogame-winnen.mp3"];
+    let audio = new Audio("geluiden/"+fragmenten[keuze]);
+    audio.play();
+}
+
+//==============
+// autdo functie - werkt (plaats deze in de bestaandeb if statement)
+playAudio1();
+playAudio2();
+playAudio3();
+function playAudio1() {
+    let audio1 = new Audio("geluiden/retrogame-winnen.mp3");
+    audio1.play();
+}
+function playAudio2() {
+    let audio = new Audio("geluiden/retrogame-verliezen.wav");
+    audio.play();
+}
+function playAudio3() {
+    let audio = new Audio("geluiden/gewonnen.wav");
+    audio.play();
+}
+</script>
+
 </script>
 <div id="speelbord"></div>

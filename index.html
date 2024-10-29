@@ -154,9 +154,13 @@
             </div>
         </div>
 
-        <button class="reset" id="reset" onclick="location.reload();">
-            Reset
-        </button>
+        <div class="btn-container">
+            <button class="button-save" onclick="saveGameState()">Save</button>
+            <button class="reset" id="reset" onclick="location.reload();">
+                Reset
+            </button>
+            <button class="button-load" onclick="loadGameState()">Load</button>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>

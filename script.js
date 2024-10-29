@@ -32,21 +32,25 @@ function startfunctie() {
     shuffle(kaarten);
 }
 
-// autdo functie - werkt (plaats deze in de bestaandeb if statement)
-function playAudio1() {
-    let audio1 = new Audio("geluiden/retrogame-winnen.mp3");
-    audio1.play();
-}
-
-function playAudio2() {
-    let audio = new Audio("geluiden/retrogame-verliezen.wav");
+// de geluidsfragmenten
+playAudio("gewonnen");
+playAudio("retrogame-winnen.mp3");
+playAudio("retrogame-veriezen.wav");
+// functie met parameter voor geluidfragmenten
+function playAudio(fragment) {
+    let audio = new Audio("geluiden/" + fragment);
     audio.play();
 }
 
-function playAudio3() {
-    let audio = new Audio("geluiden/gewonnen.wav");
-    audio.play();
-}
+// function playAudio2() {
+//     let audio = new Audio("geluiden/");
+//     audio.play();
+// }
+
+// function playAudio3() {
+//     let audio = new Audio("geluiden/gewonnen.wav");
+//     audio.play();
+// }
 
 // Verander de afbeelding van de omgedraaide kaart
 function draaikaartom(kaartnr, plaatje) {
@@ -61,8 +65,7 @@ function draaikaartom(kaartnr, plaatje) {
             omgedraaid[vorigeindex] = 1;
             omgedraaid[kaartnr] = 1;
             document.getElementById("klikOnthouden").innerHTML = klik;
-            // geluidseffect afspelen
-            playAudio1();
+            playAudio("retrogame-winnen.mp3"); // hier geluidseffect afspelen
         } else {
             // Als de kaarten niet overeenkomen, draai ze terug
             setTimeout(function () {
@@ -70,8 +73,8 @@ function draaikaartom(kaartnr, plaatje) {
                     "afbeeldingen/achterkant.jpg";
                 document.getElementById(`kaart${kaartnr + 1}`).src =
                     "afbeeldingen/achterkant.jpg";
-                playAudio2();
-                // hier onthoudt ik de klik!
+                playAudio("retrogame-verliezen.wav"); // hier geluidsfragment afspelen
+                // hier klik bijhouden
                 document.getElementById("klikOnthouden").innerHTML = klik;
             }, 1500);
         }
@@ -87,7 +90,7 @@ function allesOmgedraaid() {
             return waarde === 1;
         })
     ) {
-        playAudio3(); // Roep de functie aan om het geluid af te spelen
+        playAudio("gewonnen.wav"); // hier geluidseffect afspelen
     }
 }
 
@@ -96,5 +99,22 @@ function klikOnthouden() {
     klik += 1 / 2;
 }
 
-// Start het spel wanneer de pagina wordt geladen
+// Sla het spel op in localStorage - alle variabelen bij elkaar, zijn de gamestate
+function saveGameState() {
+    localStorage.setItem("saveKliks", aantalkeergeklikt);
+    localStorage.setItem("kaartgedraait", JSON.stringify(omgedraaid));
+    localStorage.setItem("kaartVorigeIndex", vorigeindex);
+    localStorage.setItem("kaartNr", JSON.stringify(kaarten));
+    localStorage.setItem("klikTeller", klik);
+}
+
+// // het spel laden uit localStorage - ik kom er niet uit!
+function loadGameState() {
+    aantalkeergeklikt = parseInt(localStorage.getItem("saveKliks"));
+    omgedraaid = JSON.parse(localStorage.getItem("kaartgedraait"));
+    vorigeindex = localStorage.getItem("kaartVorigeIndex");
+    kaarten = JSON.parse(localStorage.getItem("kaartNr"));
+    klik = parseInt(localStorage.getItem("klikTeller"));
+}
+
 window.onload = startfunctie;
